@@ -1,1 +1,1 @@
-rootProject.name = "currender-api"
+rootProject.name = "currender.api"
