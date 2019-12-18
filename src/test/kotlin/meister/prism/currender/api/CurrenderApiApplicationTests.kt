@@ -8,6 +8,7 @@ class CurrenderApiApplicationTests {
 
 	@Test
 	fun contextLoads() {
+
 	}
 
 }
