@@ -16,12 +16,10 @@ class TrainScraper {
             val troubles: Elements = document.select("div.elmTblLstLine.trouble").select("table").select("a")
             for(e: Element in troubles){
                 var url = e.attr("href")
-//                println(url)
                 troubleDescriptions.add(getTroubleDescription(url))
             }
         }
         return entityMapping(troubleDescriptions)
-
     }
 
     private fun getTroubleDescription(url: String): TrainEntity.TrainEntityElement {

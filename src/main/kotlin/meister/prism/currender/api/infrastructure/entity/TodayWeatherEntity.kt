@@ -14,9 +14,6 @@ class TodayWeatherEntity (
             val publicTime: String
     )
     class Forecast(
-            /**
-             * YYYY-MM-DD
-             */
             val date: String,
             val dateLabel: String,
             val telop: String,

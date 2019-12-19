@@ -28,7 +28,6 @@ class WeatherScraper {
 
     private fun entityMapping(cityname: String, days: Elements,chanceOfRains: Elements,
                       maxTemps: Elements, minTemps: Elements): WeeklyWeatherForecastEntity {
-        // days: <th class="weekday">19<br>木</th> -> 19
         var dates: ArrayList<String> = ArrayList()
         var dys: ArrayList<String> = ArrayList()
         var cor: ArrayList<String> = ArrayList()
