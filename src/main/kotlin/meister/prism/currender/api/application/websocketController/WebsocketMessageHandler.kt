@@ -8,9 +8,10 @@ import org.springframework.web.socket.handler.TextWebSocketHandler
 /**
  * WebSocketでメッセージを受け取ったときの動作を示す。
  */
-class MessageHandler: TextWebSocketHandler() {
-
-    var users: ArrayList<WebSocketSession> = ArrayList<WebSocketSession>()
+class WebsocketMessageHandler: TextWebSocketHandler() {
+    companion object {
+        var users: ArrayList<WebSocketSession> = ArrayList<WebSocketSession>()
+    }
     private val periodicallyController: PeriodicallyController = PeriodicallyController()
 
     override fun afterConnectionEstablished(session: WebSocketSession) {
@@ -52,6 +53,7 @@ class MessageHandler: TextWebSocketHandler() {
 
     fun postMessage(message: String){
         try {
+            println(message)
             users.forEach {it.sendMessage(TextMessage(message))}
         } catch (e: Exception) {
             println("hogehoge")

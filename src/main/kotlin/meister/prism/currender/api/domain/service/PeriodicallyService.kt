@@ -1,5 +1,6 @@
 package meister.prism.currender.api.domain.service
 
+import meister.prism.currender.api.application.websocketController.WebsocketMessageHandler
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -13,14 +14,25 @@ class PeriodicallyService {
         if (mainTimer == null){
             mainTimer = Timer()
         }
-        mainTimer?.schedule(0,1000,({
-            println(count)
-            count++
+        mainTimer?.schedule(0,10000,({
+            periodicallyHandler()
         }))
     }
 
     fun stop(): Unit {
         mainTimer?.cancel()
         mainTimer = null
+    }
+    private fun periodicallyHandler() {
+        val almanacService = AlmanacService()
+        val fortuneService = FortuneService()
+        val trafficService = TrafficService()
+        val weatherService = WeatherService()
+        val whatIsTodayService = WhatIsTodayService()
+        almanacService.sendPayload()
+        fortuneService.sendPayload()
+        trafficService.sendPayload()
+        weatherService.sendPayload()
+        whatIsTodayService.sendPayload()
     }
 }

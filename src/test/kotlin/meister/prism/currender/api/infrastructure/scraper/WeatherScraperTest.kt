@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 internal class WeatherScraperTest {
     @Test
     fun getWeeklyWeatherForecastEntityTest(): Unit {
-        val t = WeatherScraper()
+        val t = WeeklyWeatherForecastScraper()
         val a: WeeklyWeatherForecastEntity = t.scrape()
         println(Gson().toJson(a))
     }
