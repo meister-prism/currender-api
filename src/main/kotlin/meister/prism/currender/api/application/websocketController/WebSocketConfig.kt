@@ -15,6 +15,6 @@ class WebSocketConfig: WebSocketConfigurer {
     }
 
     fun messageHandler(): WebSocketHandler {
-        return MessageHandler()
+        return WebsocketMessageHandler()
     }
 }

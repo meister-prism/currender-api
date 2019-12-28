@@ -1,5 +1,6 @@
 package meister.prism.currender.api.domain.service
 
+import meister.prism.currender.api.application.websocketController.WebsocketMessageHandler
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -14,13 +15,16 @@ class PeriodicallyService {
             mainTimer = Timer()
         }
         mainTimer?.schedule(0,1000,({
-            println(count)
-            count++
+            A()
         }))
     }
 
     fun stop(): Unit {
         mainTimer?.cancel()
         mainTimer = null
+    }
+    fun A() {
+        AlmanacService().sendPayload()
+
     }
 }
