@@ -1,12 +1,12 @@
 package meister.prism.currender.api.application.resource
 
 class TrafficPayload (
-        val TrafficsArray: Array<TrafficData>
+        val train: ArrayList<TrainData>,
+        val trainMessage: String
 ){
-    class TrafficData(
+    class TrainData(
         val line: String,
-        val type: String,
-        val text: String,
-        val delayTime: Int?
+        val serviceStatus: String,
+        val description: String
     )
 }

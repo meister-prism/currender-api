@@ -12,7 +12,7 @@ class WhatIsTodayScraper(){
     fun scrape(): WhatIsTodayEntity{
         val document: Document = Jsoup.connect(endPoint).get()
         val title: String = document.select("#dateDtl").select("dt").select("span").text()
-        val description: String = document.select("#dateDtl").select("dt").text()
+        val description: String = document.select("#dateDtl").select("dd").text()
         return entityMapping(title,description)
     }
 

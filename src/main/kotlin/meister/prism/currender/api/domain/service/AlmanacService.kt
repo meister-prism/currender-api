@@ -5,10 +5,8 @@ import meister.prism.currender.api.application.resource.AlmanacPayload
 import meister.prism.currender.api.application.resource.EventBody
 import meister.prism.currender.api.application.websocketController.WebsocketMessageHandler
 import meister.prism.currender.api.constant.EventName
-//import meister.prism.currender.api.constant.EventName
 import meister.prism.currender.api.infrastructure.apiClient.MoonAgeApiClient
 import meister.prism.currender.api.infrastructure.apiClient.SunMoonRiseSetApiClient
-import org.springframework.stereotype.Service
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -21,10 +19,10 @@ class AlmanacService {
         val sunMoonRiseSetResponse = sunMoonRiseSetApiClient.getSunMoonRiseSetEntity()
         val riseAndSet = sunMoonRiseSetResponse.result.rise_and_set
         val sunMoonRiseSet = AlmanacPayload.SunMoonRiseSet(
-                SimpleDateFormat(riseAndSet.sunrise_hm).applyPattern("HH:mm").toString(),
-                SimpleDateFormat(riseAndSet.sunset_hm).applyPattern("HH:mm").toString(),
-                SimpleDateFormat(riseAndSet.moonrise_hm).applyPattern("HH:mm").toString(),
-                SimpleDateFormat(riseAndSet.moonset_hm).applyPattern("HH:mm").toString()
+                riseAndSet.sunrise_hm,
+                riseAndSet.sunset_hm,
+                riseAndSet.moonrise_hm,
+                riseAndSet.moonset_hm
         )
         val now: String = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
         return AlmanacPayload(

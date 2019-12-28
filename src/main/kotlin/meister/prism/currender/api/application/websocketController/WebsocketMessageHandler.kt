@@ -53,6 +53,7 @@ class WebsocketMessageHandler: TextWebSocketHandler() {
 
     fun postMessage(message: String){
         try {
+            println(message)
             users.forEach {it.sendMessage(TextMessage(message))}
         } catch (e: Exception) {
             println("hogehoge")

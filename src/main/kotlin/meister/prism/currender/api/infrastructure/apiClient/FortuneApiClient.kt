@@ -31,7 +31,7 @@ class FortuneApiClient {
         val body: JsonArray = responseObject.getAsJsonObject("horoscope").getAsJsonArray(now) ?: return null
         var horoscopes: ArrayList<FortuneEntity.Horoscope> = ArrayList()
         for(e: JsonElement in body){
-            println(e.asJsonObject["sign"].toString().replace("\"",""))
+//            println(e.asJsonObject["sign"].toString().replace("\"",""))
             horoscopes.add(
                     FortuneEntity.Horoscope(
                             e.asJsonObject["sign"].toString().replace("\"",""),

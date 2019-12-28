@@ -8,7 +8,7 @@ import org.jsoup.select.Elements
 /**
  * 気象庁のHPから東京都の天気をスクレイピングします。
  */
-class WeatherScraper {
+class WeeklyWeatherForecastScraper {
     private val endPoint: String = "https://www.jma.go.jp/jp/week/319.html"
     // 週間天気を取得するなど
     fun scrape(): WeeklyWeatherForecastEntity {
@@ -22,17 +22,20 @@ class WeatherScraper {
         // 最高・最低気温
         val maxTemps: Elements = document.select("table#infotablefont").select("tr").eq(4).select("td")
         val minTemps: Elements = document.select("table#infotablefont").select("tr").eq(5).select("td")
+        // 天気
+        val weather: Elements = document.select("table#infotablefont").select("tr").eq(1).select("td")
         val cityname: String = city.eq(0).text()
-        return entityMapping(cityname, days, chanceOfRains, maxTemps, minTemps)
+        return entityMapping(cityname, days, chanceOfRains, maxTemps, minTemps,weather)
     }
 
     private fun entityMapping(cityname: String, days: Elements,chanceOfRains: Elements,
-                      maxTemps: Elements, minTemps: Elements): WeeklyWeatherForecastEntity {
+                              maxTemps: Elements, minTemps: Elements, weather:Elements): WeeklyWeatherForecastEntity {
         var dates: ArrayList<String> = ArrayList()
         var dys: ArrayList<String> = ArrayList()
         var cor: ArrayList<String> = ArrayList()
         var mxt: ArrayList<String> = ArrayList()
         var mnt: ArrayList<String> = ArrayList()
+        var wthr: ArrayList<String> = ArrayList()
         var cnt:Int = 0
         for(e in days){
             if(e.text() != "日付"){
@@ -45,7 +48,8 @@ class WeatherScraper {
             cor.add(chanceOfRains.eq(i).text())
             mxt.add(maxTemps.eq(i).text().replace("\\(.*\\)".toRegex(),""))
             mnt.add(minTemps.eq(i).text().replace("\\(.*\\)".toRegex(),""))
+            wthr.add(weather.eq(i).select("img").attr("alt"))
         }
-        return WeeklyWeatherForecastEntity(cityname,dates,dys,cor,mxt,mnt)
+        return WeeklyWeatherForecastEntity(cityname,dates,dys,cor,mxt,mnt,wthr)
     }
 }

@@ -14,8 +14,8 @@ class PeriodicallyService {
         if (mainTimer == null){
             mainTimer = Timer()
         }
-        mainTimer?.schedule(0,1000,({
-            A()
+        mainTimer?.schedule(0,10000,({
+            periodicallyHandler()
         }))
     }
 
@@ -23,8 +23,16 @@ class PeriodicallyService {
         mainTimer?.cancel()
         mainTimer = null
     }
-    fun A() {
-        AlmanacService().sendPayload()
-
+    private fun periodicallyHandler() {
+        val almanacService = AlmanacService()
+        val fortuneService = FortuneService()
+        val trafficService = TrafficService()
+        val weatherService = WeatherService()
+        val whatIsTodayService = WhatIsTodayService()
+        almanacService.sendPayload()
+        fortuneService.sendPayload()
+        trafficService.sendPayload()
+        weatherService.sendPayload()
+        whatIsTodayService.sendPayload()
     }
 }
