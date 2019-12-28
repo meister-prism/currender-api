@@ -1,36 +1,14 @@
 package meister.prism.currender.api.infrastructure.entity
 
 class TodayWeatherEntity (
-        val endPoint: String = "http://weather.livedoor.com/forecast/webservice/json/v1",
-        val forecasts: Array<Forecast>,
-        val publicTime: String,
+        val chanceOfRains: ArrayList<String>,
+        val temperature: Temperature,
         val title: String,
-        val description: Description,
-        val link: String,
-        val location: Location
+        val info: String
 ){
-    class Description(
-            val text: String,
-            val publicTime: String
-    )
-    class Forecast(
-            val date: String,
-            val dateLabel: String,
-            val telop: String,
-            val temperature: Temperature
-    ){
-        class Temperature(
-                val min: Temp,
-                val max: Temp
-        )
-        class Temp(
-                val celsius: String,
-                val fahrenheit: String
-        )
-    }
-    class Location(
-            val city: String,
-            val area: String,
-            val prefecture: String
+    val endPoint: String = "https://www.jma.go.jp/jp/yoho/319.html"
+    class Temperature(
+            val morningMin: String,
+            val daytimeMax: String
     )
 }

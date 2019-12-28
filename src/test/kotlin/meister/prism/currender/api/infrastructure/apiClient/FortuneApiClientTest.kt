@@ -11,8 +11,5 @@ internal class FortuneApiClientTest{
         val a = t.getFortuneEntity()
         println(Gson().toJson(a).toString())
     }
-    @Test
-    fun test(){
-        val t = FortuneApiClient()
-    }
+
 }

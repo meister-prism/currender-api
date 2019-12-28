@@ -1,10 +1,10 @@
 package meister.prism.currender.api.application.resource
 
 class TodayWeatherPayload(
-        val code: Int,
-        val text: String,
+        val title: String,
+        val description: String,
         val temperature: Temperature,
-        val chanceOfRain: Double,
+        val chanceOfRains: ArrayList<String>,
         val date: String
 ){
         class Temperature(

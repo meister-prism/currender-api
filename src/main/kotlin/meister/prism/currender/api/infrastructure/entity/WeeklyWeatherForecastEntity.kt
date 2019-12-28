@@ -6,5 +6,6 @@ class WeeklyWeatherForecastEntity (
         val days: ArrayList<String>,
         val chanceOfRains: ArrayList<String>,
         val maxTemperatures: ArrayList<String>,
-        val minTemperatures: ArrayList<String>
+        val minTemperatures: ArrayList<String>,
+        val weathers: ArrayList<String>
 )

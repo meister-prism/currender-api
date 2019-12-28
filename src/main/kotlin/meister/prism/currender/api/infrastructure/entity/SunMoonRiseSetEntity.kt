@@ -26,10 +26,14 @@ class SunMoonRiseSetEntity (
             )
         }
         class RiseAndSet(
-            val sunrise: String,
-            val sunset: String,
-            val sunrise_hm: String,
-            val sunset_hm: String
+            val sunrise: String, // H.m/60のDouble
+            val sunset: String, // H.m/60のDouble
+            val sunrise_hm: String, // Hm: HH:mm のデータ
+            val sunset_hm: String, // Hm: HH:mm のデータ
+            val moonrise: String,  // H.m/60のDouble
+            val moonset: String, // H.m/60のDouble
+            val moonrise_hm: String, // Hm: HH:mm のデータ
+            val moonset_hm: String // Hm: HH:mm のデータ
         )
     }
 

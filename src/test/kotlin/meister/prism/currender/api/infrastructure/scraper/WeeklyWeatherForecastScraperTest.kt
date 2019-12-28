@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-internal class WeatherScraperTest {
+internal class WeeklyWeatherForecastScraperTest {
     @Test
     fun getWeeklyWeatherForecastEntityTest(): Unit {
-        val t = WeatherScraper()
+        val t = WeeklyWeatherForecastScraper()
         val a: WeeklyWeatherForecastEntity = t.scrape()
         println(Gson().toJson(a))
     }

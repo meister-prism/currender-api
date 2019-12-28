@@ -2,7 +2,7 @@ package meister.prism.currender.api.infrastructure.entity
 
 class FortuneEntity (
         val horoscopes: ArrayList<Horoscope>,
-        val date: String
+        val date: String // yyyy-MM-dd
 ) {
     class Horoscope(
             val sign: String, // 星座名
