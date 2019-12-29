@@ -14,7 +14,7 @@ class PeriodicallyService {
         if (mainTimer == null){
             mainTimer = Timer()
         }
-        mainTimer?.schedule(0,10000,({
+        mainTimer?.schedule(0,30000,({
             periodicallyHandler()
         }))
     }
