@@ -17,14 +17,11 @@ class WeatherService {
     fun getTodayWeatherPayload(): TodayWeatherPayload {
         val res = todayWeatherScraper.scrape()
         val now: String = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
-        val tmp =  TodayWeatherPayload.Temperature(
-                res.temperature.daytimeMax,
-                res.temperature.morningMin
-        )
-        println(res.temperature.daytimeMax)
+        println(res)
         return TodayWeatherPayload(
                 res.title,res.info,
-                tmp,
+                res.temperature.daytimeMax,
+                res.temperature.morningMin,
                 res.chanceOfRains,
                 now
         )
@@ -35,11 +32,11 @@ class WeatherService {
         val now: String = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
         var weathers: ArrayList<WeatherForecastPayload.Weather> = ArrayList()
         for(i:Int in res.dates.indices){
-//            val temp = WeatherForecastPayload.Weather.Temperature(res.maxTemperatures[i],res.minTemperatures[i])
-            val temp = WeatherForecastPayload.Weather.Temperature("ww","mm")
+
             weathers.add(WeatherForecastPayload.Weather(
                     res.weathers[i],
-                    temp,
+                    res.maxTemperatures[i].replace(" ",""),
+                    res.minTemperatures[i].replace(" ",""),
                     res.chanceOfRains[i],
                     now
             ))
@@ -60,6 +57,4 @@ class WeatherService {
         )
         messageHandler.postMessage(Gson().toJson(body))
     }
-
-
 }

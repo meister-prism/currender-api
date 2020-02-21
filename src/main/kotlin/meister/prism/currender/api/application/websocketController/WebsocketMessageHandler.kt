@@ -48,7 +48,6 @@ class WebsocketMessageHandler: TextWebSocketHandler() {
         users.remove(rem)
         var targets = users.filter { user -> user.id != session.id }
         targets.forEach {it.sendMessage(TextMessage("Good Bye."))}
-
     }
 
     fun postMessage(message: String){
