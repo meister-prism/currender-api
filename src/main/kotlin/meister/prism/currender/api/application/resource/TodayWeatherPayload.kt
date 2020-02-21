@@ -3,12 +3,8 @@ package meister.prism.currender.api.application.resource
 class TodayWeatherPayload(
         val title: String,
         val description: String,
-        val temperature: Temperature,
+        val maxTemperature: String,
+        val minTemperature: String,
         val chanceOfRains: ArrayList<String>,
         val date: String
-){
-        class Temperature(
-                max: String,
-                min: String
-        )
-}
+)

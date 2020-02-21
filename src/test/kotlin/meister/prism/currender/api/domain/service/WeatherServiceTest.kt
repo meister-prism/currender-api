@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Test
 
 internal class WeatherServiceTest {
     @Test
-    fun getWeatherPayloadTest(){
+    fun getWeatherForecastPayloadTest(){
+        println(Gson().toJson(WeatherService().getWeatherForecastPayload()))
+    }
+
+    @Test
+    fun getTodayWeatherPayloadTest(){
         println(Gson().toJson(WeatherService().getTodayWeatherPayload()))
     }
 }
