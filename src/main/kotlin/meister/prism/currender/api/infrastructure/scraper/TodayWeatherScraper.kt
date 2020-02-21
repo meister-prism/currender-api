@@ -21,7 +21,7 @@ class TodayWeatherScraper {
         return entityMapping(imgAltText, chanceOfRains.eq(0), temperatures.eq(0), info.eq(0).text())
     }
 
-    private fun entityMapping(imgAltText: String, chanceOfRains: Elements, temperature: Elements, info: String): TodayWeatherEntity{
+    private fun entityMapping(imgAltText: String, chanceOfRains: Elements, temperature: Elements, info: String): TodayWeatherEntity {
         val chanceOfRainsList: ArrayList<String> = ArrayList()
         for(e: Element in chanceOfRains.select("tr")){
             chanceOfRainsList.add(e.select("td").text().split(" ")[1])
