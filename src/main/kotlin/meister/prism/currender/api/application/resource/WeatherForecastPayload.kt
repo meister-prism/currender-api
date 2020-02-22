@@ -9,10 +9,5 @@ class WeatherForecastPayload (
             val minTemparature: String,
             val chanceOfRain: String,
             val date: String
-    ){
-        class Temperature(
-                max: String,
-                min: String
-        )
-    }
+    )
 }
