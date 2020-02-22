@@ -7,4 +7,5 @@ object EventName {
     val WEATHER_TODAY = "today_weather"
     val WEATHER_FORECAST = "weather_forecast"
     val WHAT_IS_TODAY = "what_is_today"
+    val HANDWRITTEN_MEMO_CHANGED = "handwrittern_memo_changed"
 }
