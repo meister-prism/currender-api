@@ -33,7 +33,7 @@ class WebsocketMessageHandler: TextWebSocketHandler() {
         try {
             users.forEach {it.sendMessage(message)}
         } catch (e: Exception) {
-            session.sendMessage(TextMessage("sendMessage: Error"))
+            session.sendMessage(TextMessage("{'EventName': 'Error'}"))
         }
     }
 
@@ -47,7 +47,7 @@ class WebsocketMessageHandler: TextWebSocketHandler() {
                 .first()
         users.remove(rem)
         var targets = users.filter { user -> user.id != session.id }
-        targets.forEach {it.sendMessage(TextMessage("Good Bye."))}
+        targets.forEach {it.sendMessage(TextMessage("{'EventName':'Good Bye.'}"))}
     }
 
     fun postMessage(message: String){
