@@ -14,15 +14,17 @@ import java.time.format.DateTimeFormatter
 class MemoService {
     fun postMemo(data: MemoImgBody): String {
         val now: String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss")).toString()
-        println(now)
-        return MemoRepository().addImg(ImageMemoEntity(now,data.handwrittenImg))
+
+        return MemoRepository().addImg(ImageMemoEntity(now,data.handwrittenImg.replace(" " ,"SPACE")))
     }
     private val messageHandler = WebsocketMessageHandler()
     fun sendAllMemos(entity: ArrayList<ImageMemoEntity>) {
+        for(i in entity){
+            i.imgMemo = i.imgMemo.replace("SPACE"," ")
+        }
         val body = EventBody(
                 EventName.HANDWRITTEN_MEMO_CHANGED,entity
         )
         messageHandler.postMessage(Gson().toJson(body))
     }
-
 }
